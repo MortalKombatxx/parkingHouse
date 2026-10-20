@@ -1,6 +1,6 @@
 # ParkingHouse
 
-A console program for booking a parking spot. Open the folder in IntelliJ IDEA and run `Main`.
+School assignment: a console program for booking a parking spot. Open the folder in IntelliJ IDEA and run `Main`.
 
 ## How a booking works
 

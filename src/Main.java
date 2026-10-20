@@ -10,7 +10,7 @@ public class Main {
         System.out.println("=== Parkeringssystem ===");
 
         String omrade = chooseParkingSpot();
-        Fordon fordon = chooseVehicle();
+        Fordon.VehicleTYPE type = chooseVehicle();
 
         System.out.print("Ange registreringsnummer: ");
         String regNumber = scanner.nextLine().trim();
@@ -19,6 +19,8 @@ public class Main {
             System.out.println("Registreringsnummer får inte vara tomt.");
             return;
         }
+
+        Fordon fordon = new Fordon(type, regNumber);
 
         LocalDateTime startTime = chooseTime("Ange starttid");
         LocalDateTime endTime = chooseTime("Ange sluttid");
@@ -55,7 +57,7 @@ public class Main {
     }
 
     // Välj fordon
-    public static Fordon chooseVehicle() {
+    public static Fordon.VehicleTYPE chooseVehicle() {
         System.out.println("\nVälj fordon:");
         System.out.println("1. Bil (25 kr/timme)");
         System.out.println("2. Motorcykel (15 kr/timme)");
@@ -63,20 +65,14 @@ public class Main {
 
         int val = readChoice(1, 3);
 
-        Fordon.VehicleTYPE type;
-
         switch (val) {
             case 1:
-                type = Fordon.VehicleTYPE.BIL;
-                break;
+                return Fordon.VehicleTYPE.BIL;
             case 2:
-                type = Fordon.VehicleTYPE.MOTORCYKEL;
-                break;
+                return Fordon.VehicleTYPE.MOTORCYKEL;
             default:
-                type = Fordon.VehicleTYPE.LASTBIL;
+                return Fordon.VehicleTYPE.LASTBIL;
         }
-
-        return new Fordon(type, "");
     }
 
     // Välj datum och tid
